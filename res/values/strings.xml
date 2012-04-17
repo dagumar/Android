@@ -3,5 +3,8 @@
 
     <string name="hello">Hello World, AndroidActivity!</string>
     <string name="app_name">Android</string>
+    <string name="primero">Primero!</string>
+    <string name="segundo">Segundo!</string>
+    <string name="tercero">Tercero!</string>
 
 </resources>
