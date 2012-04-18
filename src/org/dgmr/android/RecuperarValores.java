@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class RecuperarValores extends Activity {
 	
@@ -28,6 +29,6 @@ public class RecuperarValores extends Activity {
 		txtNombre.setText(nombre);
 		txtApellidos.setText(apellidos);
 		txtCiudad.setText(ciudad);
-		
+
 	}
 }

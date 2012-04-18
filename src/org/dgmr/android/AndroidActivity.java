@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class AndroidActivity extends Activity implements OnItemSelectedListener{
 	TextView text = null;
@@ -61,7 +62,8 @@ public class AndroidActivity extends Activity implements OnItemSelectedListener{
 	    ciudad = spinCiudad.getSelectedItem().toString();
 		//String ciudad = editTxtCiudad.getText().toString();
 		Log.e("Activity", nombre + " " + apellidos + " " + ciudad);
-		
+
+		Toast.makeText(this, "Enviando los datos. ", Toast.LENGTH_LONG).show();
 		Intent request = new Intent(AndroidActivity.this, RecuperarValores.class);
 		request.putExtra("nombre", nombre);
 		request.putExtra("apellidos", apellidos);
