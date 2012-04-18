@@ -81,6 +81,8 @@ public class AndroidActivity extends Activity implements OnItemSelectedListener{
 		// TODO Auto-generated method stub
 		MenuItem item = null;
 		item = menu.add(this.getString(R.string.desarrollador));
+		item.setIcon(R.drawable.ic_launcher);
+		item = menu.add(this.getString(R.string.ayuda));
 		item.setIcon(android.R.drawable.ic_menu_help);
 		return super.onCreateOptionsMenu(menu);
 	}
@@ -88,12 +90,15 @@ public class AndroidActivity extends Activity implements OnItemSelectedListener{
 	@Override
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
 		if(item.getTitle().equals(this.getString(R.string.desarrollador))){
-			showDialog("Dev by:", "Dagumar");
+			mostrarAlerta("Dev by:", "Dagumar");
+		}
+		if(item.getTitle().equals(this.getString(R.string.ayuda))){
+			Toast.makeText(AndroidActivity.this, "En construcción", Toast.LENGTH_LONG).show();
 		}
 		return super.onMenuItemSelected(featureId, item);
 	}
 	
-	public void showDialog(String titulo, String texto){
+	public void mostrarAlerta(String titulo, String texto){
 
 		Builder alert = new AlertDialog.Builder(this);
 		alert.setTitle(titulo);
