@@ -49,7 +49,10 @@ public final class R {
         public static final int textView9=0x7f07001b;
         public static final int txtApellidos=0x7f070006;
         public static final int txtCiudad=0x7f070007;
+        public static final int txtFecha=0x7f07001e;
         public static final int txtNombre=0x7f070005;
+        public static final int txtTwit=0x7f07001d;
+        public static final int txtUsuario=0x7f07001c;
         public static final int txtView=0x7f070008;
     }
     public static final class layout {
@@ -61,6 +64,7 @@ public final class R {
         public static final int linear=0x7f030005;
         public static final int main=0x7f030006;
         public static final int relative=0x7f030007;
+        public static final int twitterclient=0x7f030008;
     }
     public static final class string {
         public static final int app_name=0x7f060001;
