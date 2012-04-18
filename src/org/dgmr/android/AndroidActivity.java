@@ -3,6 +3,10 @@ package org.dgmr.android;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -91,9 +95,11 @@ public class AndroidActivity extends Activity implements OnItemSelectedListener{
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
 		if(item.getTitle().equals(this.getString(R.string.desarrollador))){
 			mostrarAlerta("Dev by:", "Dagumar");
+			mostrarAlertaEnBarraDeNotificaciones();
 		}
 		if(item.getTitle().equals(this.getString(R.string.ayuda))){
 			Toast.makeText(AndroidActivity.this, "En construcción", Toast.LENGTH_LONG).show();
+			
 		}
 		return super.onMenuItemSelected(featureId, item);
 	}
@@ -106,7 +112,6 @@ public class AndroidActivity extends Activity implements OnItemSelectedListener{
 		alert.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				// Hacer algo cuando se pulsta el botón del dialog
 				Toast.makeText(AndroidActivity.this, "Donaciones a través de Paypal!! ", Toast.LENGTH_LONG).show();
 			}
 		});
@@ -114,6 +119,17 @@ public class AndroidActivity extends Activity implements OnItemSelectedListener{
 
 
 	}
+	
+	public void mostrarAlertaEnBarraDeNotificaciones(){
+		String ns = Context.NOTIFICATION_SERVICE;
+		NotificationManager mNotificationManager = (NotificationManager) getSystemService(ns);
+		Notification notification = new Notification(R.drawable.ic_launcher, "Esto es una alerta en la barra", System.currentTimeMillis());
+		Intent notificationIntent = new Intent(this, AndroidActivity.class);
+		PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+		notification.setLatestEventInfo(this.getApplicationContext(), ((CharSequence)"Alerta"), ((CharSequence)"En el status"), contentIntent);
+		mNotificationManager.notify(1, notification);
+	}
+	
 	
 
 	public void borrarClick(View view) {
