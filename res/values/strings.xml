@@ -6,5 +6,6 @@
     <string name="primero">Primero!</string>
     <string name="segundo">Segundo!</string>
     <string name="tercero">Tercero!</string>
+    <string name="autodestruccion">Autodestruccion!</string>
 
 </resources>
