@@ -1,10 +1,15 @@
 package org.dgmr.android;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Layout;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -69,8 +74,42 @@ public class AndroidActivity extends Activity implements OnItemSelectedListener{
 		request.putExtra("apellidos", apellidos);
 		request.putExtra("ciudad", ciudad);
 		startActivity(request);
-		
 	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// TODO Auto-generated method stub
+		MenuItem item = null;
+		item = menu.add(this.getString(R.string.desarrollador));
+		item.setIcon(android.R.drawable.ic_menu_help);
+		return super.onCreateOptionsMenu(menu);
+	}
+	
+	@Override
+	public boolean onMenuItemSelected(int featureId, MenuItem item) {
+		if(item.getTitle().equals(this.getString(R.string.desarrollador))){
+			showDialog("Dev by:", "Dagumar");
+		}
+		return super.onMenuItemSelected(featureId, item);
+	}
+	
+	public void showDialog(String titulo, String texto){
+
+		Builder alert = new AlertDialog.Builder(this);
+		alert.setTitle(titulo);
+		alert.setMessage(texto);
+		alert.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// Hacer algo cuando se pulsta el botón del dialog
+				Toast.makeText(AndroidActivity.this, "Donaciones a través de Paypal!! ", Toast.LENGTH_LONG).show();
+			}
+		});
+		alert.show();
+
+
+	}
+	
 
 	public void borrarClick(View view) {
 
