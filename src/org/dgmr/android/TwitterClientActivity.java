@@ -15,7 +15,6 @@ import android.widget.SimpleAdapter;
 public class TwitterClientActivity extends ListActivity implements OnItemClickListener{
 
 	
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -58,7 +57,6 @@ public class TwitterClientActivity extends ListActivity implements OnItemClickLi
 		arrayMaps.add(twitt4);
 		
 		SimpleAdapter adaptadorParaLaLista = new SimpleAdapter(this, arrayMaps, R.layout.twitterclient, cabecera, nombresTxtViews);
-
 		this.setListAdapter(adaptadorParaLaLista);
 	}
 
