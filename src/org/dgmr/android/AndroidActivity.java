@@ -1,6 +1,7 @@
 package org.dgmr.android;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Layout;
 import android.util.Log;
@@ -16,10 +17,10 @@ import android.widget.TextView;
 
 public class AndroidActivity extends Activity implements OnItemSelectedListener{
 	TextView text = null;
-
 	EditText editTxtNombre = null;
 	EditText editTxtApellidos = null;
 	Spinner spinCiudad = null;
+	String ciudad = "";
 
 	/** Called when the activity is first created. */
 	@Override
@@ -29,6 +30,7 @@ public class AndroidActivity extends Activity implements OnItemSelectedListener{
 		editTxtNombre = ((EditText) findViewById(R.id.editTxtNombre));
 		editTxtApellidos = ((EditText) findViewById(R.id.editTxtApellidos));
 		spinCiudad = ((Spinner) findViewById(R.id.spinCiudad));
+		spinCiudad.setOnItemSelectedListener(this);
 		obtenerValoresSpinner();
 
 
@@ -56,10 +58,16 @@ public class AndroidActivity extends Activity implements OnItemSelectedListener{
 	public void enviarClick(View view) {
 		String nombre = editTxtNombre.getText().toString();
 		String apellidos = editTxtApellidos.getText().toString();
-		String  ciudad = spinCiudad.getSelectedItem().toString();
-		;
+	    ciudad = spinCiudad.getSelectedItem().toString();
 		//String ciudad = editTxtCiudad.getText().toString();
 		Log.e("Activity", nombre + " " + apellidos + " " + ciudad);
+		
+		Intent request = new Intent(AndroidActivity.this, RecuperarValores.class);
+		request.putExtra("nombre", nombre);
+		request.putExtra("apellidos", apellidos);
+		request.putExtra("ciudad", ciudad);
+		startActivity(request);
+		
 	}
 
 	public void borrarClick(View view) {
@@ -67,7 +75,6 @@ public class AndroidActivity extends Activity implements OnItemSelectedListener{
 		editTxtNombre.setText("");
 		editTxtApellidos.setText("");
 		spinCiudad.setSelection(0);
-		//editTxtCiudad.setText("");
 
 	}
 
@@ -84,11 +91,14 @@ public class AndroidActivity extends Activity implements OnItemSelectedListener{
 	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
 			long arg3) {
 		// TODO Auto-generated method stub
+		ciudad = spinCiudad.getSelectedItem().toString();
+		Log.e("ACTIVITY", " La ciudad elegida es " + ciudad);
 		
 	}
 	@Override
 	public void onNothingSelected(AdapterView<?> arg0) {
 		// TODO Auto-generated method stub
+		ciudad = "Sin ciudad";
 		
 	}
 
